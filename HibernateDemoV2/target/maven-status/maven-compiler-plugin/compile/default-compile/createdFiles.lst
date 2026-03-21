@@ -1,4 +1,13 @@
-com\nttt\hibernatedemov2\HibernateDemoV2.class
 com\nttt\repositories\impl\CategoryRepositoryImpl.class
-com\nttt\pojo\Category.class
+com\nttt\pojo\SaleOrder.class
 com\nttt\hibernatedemov2\HibernateUtils.class
+com\nttt\pojo\Comment.class
+com\nttt\hibernatedemov2\HibernateDemoV2.class
+com\nttt\pojo\Product.class
+com\nttt\repositories\impl\ProductRepositoryImpl.class
+com\nttt\pojo\Category.class
+com\nttt\pojo\Tag.class
+com\nttt\pojo\User.class
+com\nttt\pojo\OrderDetail.class
+com\nttt\pojo\ProdTag.class
+com\nttt\repositories\impl\StatsRepositoryImpl.class

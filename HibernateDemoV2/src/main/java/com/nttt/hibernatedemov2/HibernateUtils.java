@@ -5,6 +5,13 @@
 package com.nttt.hibernatedemov2;
 
 import com.nttt.pojo.Category;
+import com.nttt.pojo.Comment;
+import com.nttt.pojo.OrderDetail;
+import com.nttt.pojo.ProdTag;
+import com.nttt.pojo.Product;
+import com.nttt.pojo.SaleOrder;
+import com.nttt.pojo.Tag;
+import com.nttt.pojo.User;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -23,6 +30,7 @@ public class HibernateUtils {
 
     static {
         Configuration conf = new Configuration();
+        
         Properties props = new Properties();
         props.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
         props.setProperty(Environment.JAKARTA_JDBC_DRIVER, "com.mysql.cj.jdbc.Driver");
@@ -34,6 +42,13 @@ public class HibernateUtils {
         conf.setProperties(props);
         
         conf.addAnnotatedClass(Category.class);
+        conf.addAnnotatedClass(Product.class);
+        conf.addAnnotatedClass(Comment.class);
+        conf.addAnnotatedClass(OrderDetail.class);
+        conf.addAnnotatedClass(ProdTag.class);
+        conf.addAnnotatedClass(SaleOrder.class);
+        conf.addAnnotatedClass(Tag.class);
+        conf.addAnnotatedClass(User.class);
         
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

@@ -1,4 +1,13 @@
 E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\hibernatedemov2\HibernateDemoV2.java
 E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\hibernatedemov2\HibernateUtils.java
 E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\Category.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\Comment.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\OrderDetail.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\ProdTag.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\Product.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\SaleOrder.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\Tag.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\pojo\User.java
 E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\repositories\impl\CategoryRepositoryImpl.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\repositories\impl\ProductRepositoryImpl.java
+E:\CS2301SpringSaleWeb\HibernateDemoV2\src\main\java\com\nttt\repositories\impl\StatsRepositoryImpl.java
