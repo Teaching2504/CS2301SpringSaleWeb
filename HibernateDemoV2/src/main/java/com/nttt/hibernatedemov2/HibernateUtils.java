@@ -13,7 +13,6 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 
-
 /**
  *
  * @author MY PC
