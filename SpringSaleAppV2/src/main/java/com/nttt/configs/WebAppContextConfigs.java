@@ -4,12 +4,20 @@
  */
 package com.nttt.configs;
 
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import com.nttt.formatters.CategoryFormatter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 /**
  *
@@ -18,16 +26,40 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @ComponentScan(
         basePackages = {
-            "com.nttt.controllers"
+            "com.nttt.controllers",
+            "com.nttt.repositories",
+            "com.nttt.services"
         }
 )
- 
+
 @EnableWebMvc
 @EnableTransactionManagement
-public class WebAppContextConfigs implements WebMvcConfigurer{
+public class WebAppContextConfigs implements WebMvcConfigurer {
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new CategoryFormatter());
+    }
+
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary cloudinary
+                = new Cloudinary(ObjectUtils.asMap(
+                        "cloud_name", "dczz59gpu",
+                        "api_key", "317245763431431",
+                        "api_secret", "i5-2JWtJ_bMGqUwkTyTiVL8sTY4",
+                        "secure", true));
+        return cloudinary;
+    }
+
+    @Bean
+    public StandardServletMultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
+    }
+
 }

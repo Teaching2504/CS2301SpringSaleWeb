@@ -1,6 +1,9 @@
+com\nttt\repositories\impl\ReceipRepositoryImpl.class
 com\nttt\repositories\impl\CategoryRepositoryImpl.class
 com\nttt\pojo\SaleOrder.class
+com\nttt\repositories\impl\UserRepositoryImpl.class
 com\nttt\hibernatedemov2\HibernateUtils.class
+com\nttt\pojo\CartItem.class
 com\nttt\pojo\Comment.class
 com\nttt\hibernatedemov2\HibernateDemoV2.class
 com\nttt\pojo\Product.class

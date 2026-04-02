@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.nttt.services.newpackage.impl;
+package com.nttt.services.impl;
 
 import com.nttt.pojo.Category;
 import com.nttt.repositories.CategoryRepository;

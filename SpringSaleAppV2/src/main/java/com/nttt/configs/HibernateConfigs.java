@@ -22,7 +22,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
  * @author admin
  */
 @Configuration
-@PropertySource("classpath:database.properties")
+@PropertySource("classpath:databases.properties")
 public class HibernateConfigs {
 
     @Autowired
@@ -31,7 +31,7 @@ public class HibernateConfigs {
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setPackagesToScan(new String[]{"com.dht.pojo"});
+        sessionFactory.setPackagesToScan(new String[]{"com.nttt.pojo"});
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
