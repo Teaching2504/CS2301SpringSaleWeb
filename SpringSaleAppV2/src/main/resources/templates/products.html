@@ -2,7 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
+<head>
         <title>QUẢN TRỊ SẢN PHẨM</title>
     <th:block th:replace="base :: resources"></th:block>
 </head>
@@ -11,7 +11,7 @@
 
     <div th:replace="base :: header"></div>
     <section class="container">
-        <form method="post" th:object=${product} enctype="multipart/form-data" th:action="@{/admin/products}">
+        <form method="post" th:object="${product}" enctype="multipart/form-data" th:action="@{/admin/products}">
             <div class="mb-3 mt-3">
                 <input type="text" class="form-control" placeholder="Tên sản phẩm" required="true" th:field="*{name}"/>
             </div>
@@ -25,8 +25,14 @@
             </div>  
             <div class="mb-3 mt-3">
                 <input type="file" class="form-control" th:field="*{file}" placeholder="Ảnh sản phẩm"/>
+                
+                <img th:if="${product.image != null}" th:src="${product.image}" width="200"/>
             </div>
-            <button type="submit" class="btn btn-primary mt-2" >Thêm sản phẩm</button>
+            <button th:if="${product.id == null}" type="submit" class="btn btn-primary mt-2" >Thêm sản phẩm</button>
+            <button th:unless="${product.id == null}" type="submit" class="btn btn-primary mt-2" >Cập nhật sản phẩm</button>
+        
+            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{image}"/>
         </form>
     </section>
     <div th:replace="base :: footer"></div>

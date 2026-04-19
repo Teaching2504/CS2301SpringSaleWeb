@@ -94,21 +94,18 @@ public class ProductRepositoryImpl implements ProductRepository {
             s.merge(p);
         }
     }
-}
 
-//    public Product getProductById(int id){
-//        try (Session s = HibernateUtils.getFACTORY().openSession()){
-//            return s.get(Product.class, id);
-//            
-//        }     
-//    }
-//    
-//    }
-//    
-//    public void deleteProduct(int id){
-//        try (Session s = HibernateUtils.getFACTORY().openSession()){
-//            Product p = this.getProductById(id);
-//            s.remove(p);
-//        }
-//    }
-//}
+    @Override
+    public Product getProductById(int id) {
+        Session s = this.FACTORY.getObject().getCurrentSession();
+        return s.get(Product.class, id);
+
+    }
+    
+    @Override
+    public void deleteProduct(int id){
+        Session s = this.FACTORY.getObject().getCurrentSession();
+            Product p = this.getProductById(id);
+            s.remove(p);
+    }
+}

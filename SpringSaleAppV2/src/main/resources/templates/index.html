@@ -29,8 +29,8 @@
                         <td th:text="${p.name}"></td>
                         <td th:text="${p.price} + 'VNĐ'"></td>
                         <td>
-                            <a href="#" class="btn btn-info">Cập nhật</a>
-                            <button class="btn btn-danger">Xóa</button>
+                            <a th:href="@{/admin/products/} + ${p.id}" class="btn btn-info">Cập nhật</a>
+                            <button class="btn btn-danger" th:onclick="'deleteProduct(\''+@{/api/products/} + ${p.id} + '\')'">Xóa</button>
                         </td>
                            
                     </tr>
@@ -38,5 +38,7 @@
             </table>
         </section>
         <div th:replace="base :: footer"></div>
+        
+        <script th:src="@{/js/script.js}"></script>
     </body>
 </html>
