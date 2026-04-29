@@ -26,7 +26,7 @@ public class ApiCategoryController {
     @Autowired
     private CategoryService cateService;
     
-    @GetMapping("/categoies")
+    @GetMapping("/categories")
     public ResponseEntity<List<Category>> list(){
         return new ResponseEntity<>(this.cateService.getCates(), HttpStatus.OK);
     }
