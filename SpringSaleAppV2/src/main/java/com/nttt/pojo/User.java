@@ -5,6 +5,7 @@
 package com.nttt.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,7 +39,7 @@ import java.util.Set;
     @NamedQuery(name = "User.findByUserRole", query = "SELECT u FROM User u WHERE u.userRole = :userRole"),
     @NamedQuery(name = "User.findByAvatar", query = "SELECT u FROM User u WHERE u.avatar = :avatar")})
 @JsonIgnoreProperties(value = {
-    "saleOrderSet", "password", "commentSet"
+    "saleOrderSet", "commentSet"
 })
 public class User implements Serializable {
 
@@ -66,6 +67,7 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "active")
     private Boolean active;
     @Basic(optional = false)

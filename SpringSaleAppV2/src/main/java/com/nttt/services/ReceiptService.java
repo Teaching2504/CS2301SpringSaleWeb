@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.nttt.repositories;
+package com.nttt.services;
 
-import com.nttt.pojo.User;
+import com.nttt.pojo.CartItem;
+import java.util.List;
 
 /**
  *
  * @author MY PC
  */
-public interface UserRepository {
-    User getUserByUsername(String username);
-    User addUser(User u);
-    boolean authenticate(String username, String password);
+public interface ReceiptService {
+    void addReceipt(List<CartItem> carts);
 }
