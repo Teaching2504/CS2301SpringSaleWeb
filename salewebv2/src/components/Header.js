@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Badge, Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import Apis, { endpoints } from "../configs/Apis";
 import { Link, useNavigate } from "react-router-dom";
+import { MyCartContext, MyUserContext } from "../configs/Contexts";
 
 const Header = () => {
 
     const [categories, setCategories] = useState([]);
     const [kw, setKw] = useState();
     const nav = useNavigate();
+    const [user, dispatch] = useContext(MyUserContext);
+    const [cart, ] = useContext(MyCartContext);
 
     const loadCates = async ()=> {
         let res = await Apis.get(endpoints['categories']);
@@ -32,12 +35,25 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Link to="/" className="nav-link">Trang Chủ</Link>
+
                     <NavDropdown title="Danh mục" id="basic-nav-dropdown">
                         {categories.map(c => {
                             const url = `/?cateId=${c.id}`;
                             return <Link key={c.id} className="dropdown-item" to={url}>{c.name}</Link>
                         })}
                     </NavDropdown>
+
+                    {user === null? <>
+                        <Link to="/register" className="nav-link text-danger">Đăng ký</Link>
+                        <Link to="/login" className="nav-link text-danger">Đăng nhập</Link>
+                    </> : <>
+                        <Link to="/" className="nav-link text-danger">
+                           <img src={user.avatar} width={30} className="rounded"/>
+                            Chào {user.username}!
+                        </Link>
+                        <Button variant="info" onClick={() => dispatch({"type": "LOGOUT"})}>Đăng xuất</Button>
+                    </>}
+                    <Link to="/cart" className="nav-link text-success">Giỏ hàng <Badge variant="danger" className="bg-danger">{cart?.totalQuantity||0}</Badge></Link>
                 </Nav>
                 <Form inline onSubmit={search}>
                     <Row>

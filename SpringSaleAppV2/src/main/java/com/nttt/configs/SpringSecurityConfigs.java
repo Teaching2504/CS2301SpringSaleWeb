@@ -44,13 +44,11 @@ public class SpringSecurityConfigs{
     
      @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(c -> c.disable()).authorizeHttpRequests((requests) -> requests
+           http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(c -> c.disable()).authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/admin").hasRole("ADMIN")
-//                .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
-//                .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
-//                .requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN") // Chỉ Admin mới được thêm SP
                 .requestMatchers("/api/**").permitAll()
-               
+                .anyRequest().authenticated()            
         ).formLogin(form -> form.loginPage("/admin/login") // Đường dẫn tới trang đăng nhập
                 .loginProcessingUrl("/admin/login") // Đường dẫn xử lý POST
                 .defaultSuccessUrl("/", true) // Chuyển hướng khi thành công
@@ -72,6 +70,7 @@ public class SpringSecurityConfigs{
         return cloudinary;
     }
 
+    
     @Bean
     public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
         return new HandlerMappingIntrospector();
