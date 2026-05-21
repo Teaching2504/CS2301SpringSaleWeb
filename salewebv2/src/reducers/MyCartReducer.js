@@ -1,23 +1,28 @@
 import cookies from 'react-cookies';
 
 export default (current, action) => {
-    if(action.type ==='UPDATE'){
-        let cart = cookies.load('cart')||null;
-        if(cart != null){
+    switch (action.type) {
+        case "UPDATE":
+            let cart = cookies.load('cart') || null;
             let totalAmount = 0;
             let totalQuantity = 0;
-            for (let c of Object.values(cart)){
-                totalQuantity+= c.quantity;
-                totalAmount += c.quantity * c.price;
+            if(cart != null){
+                for(let c of Object.values(cart)){
+                    totalQuantity += c.quantity;
+                    totalAmount += c.quantity*c.price;
+                }
             }
-
             return {
-                "totalQuantity": totalQuantity,
-                "totalAmount":totalAmount
+                "totalAmount": totalAmount,
+                "totalQuantity": totalQuantity
             }
+            case "PAID":
+                cookies.remove('cart');
+                return{
+                    "totalAmount": 0,
+                    "totalQuantity": 0
+                }
         }
-    }
 
-    
     return current;
 }

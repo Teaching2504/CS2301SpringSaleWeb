@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import MySpinner from "../../components/MySpinner";
 import Apis, { endpoints } from "../../configs/Apis";
 import { Button, Card, Col, Row, Alert } from "react-bootstrap";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import cookies from 'react-cookies';
 import { MyCartContext } from "../../configs/Contexts";
 
@@ -12,6 +12,7 @@ const Home = () => {
     const [page, setPage] = useState(1);
     const [q] = useSearchParams();
     const [, dispatch]= useContext(MyCartContext);
+    const nav = useNavigate();
 
     const loadProducts = async () => {
         try{
@@ -94,7 +95,7 @@ const Home = () => {
                                 <Card.Title>{p.name}</Card.Title>
                                 <Card.Text>{p.price} VNĐ</Card.Text>
                                 <Button variant="danger" className="me-1" onClick={()=> order(p)}>Đặt hàng</Button>
-                                <Button variant="info">Xem chi tiết</Button>
+                                <Button variant="info" onClick={() => nav(`/products/${p.id}`)}>Xem chi tiết</Button>
                             </Card.Body>
                         </Card>
                     </Col>

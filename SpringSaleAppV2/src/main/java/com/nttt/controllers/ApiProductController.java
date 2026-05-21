@@ -45,7 +45,8 @@ public class ApiProductController {
     }
     
     @GetMapping("/products/{productId}")
-    public ResponseEntity<Product> retrieve(@PathVariable(value ="productId")int id){
+    public ResponseEntity<Product> details(@PathVariable(value = "productId") int id){
         return new ResponseEntity<>(this.prodService.getProductById(id), HttpStatus.OK);
     }
+    
 }

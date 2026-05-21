@@ -12,15 +12,17 @@ import MyUserReducer from "./reducers/MyUserReducer";
 import cookies from 'react-cookies';
 import MyCartReducer from "./reducers/MyCartReducer";
 import Cart from "./screens/Cart/Cart";
+import ProductDetails from "./screens/Home/ProductDetails";
+//import ProductDetails from "./screens/Home/ProductDetails";
 
 const App = () => {
   
-  const [user, dispatch] = useReducer(MyUserReducer, cookies.load('user')|| null);
-  const[cart, cartDispatch]= useReducer(MyCartReducer, {'totalQuantity': 0, "totalAmount": 0});
+  const [user, dispatch] = useReducer(MyUserReducer, null);
+  const[cartCounter, dispatchCartCounter]= useReducer(MyCartReducer, {'totalQuantity': 0, "totalAmount": 0});
 
   return (
     <MyUserContext.Provider value={[user, dispatch]}>
-      <MyCartContext.Provider value={[cart, cartDispatch]}>
+      <MyCartContext.Provider value={[cartCounter, dispatchCartCounter]}>
         <BrowserRouter>
           <Header />
 
@@ -30,6 +32,7 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/products/:productId" element={<ProductDetails/>}/>
             </Routes>
           </Container>
 
